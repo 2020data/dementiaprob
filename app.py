@@ -8,7 +8,28 @@ Created on Wed Mar 11 23:18:50 2026
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm  # 新增這行：載入字體管理器
 import pickle
+
+# ==========================================
+# 🌟 解決雲端中文亂碼：手動載入字體檔案
+# ==========================================
+# 1. 指定您的字體檔案路徑 (請確認檔名與您下載的一模一樣)
+font_path = 'NotoSansTC-Regular.ttf'  
+
+try:
+    # 2. 將字體加入 Matplotlib 的字體庫中
+    fm.fontManager.addfont(font_path)
+    
+    # 3. 抓取這個字體的標準名稱，並設定為全域預設字體
+    font_prop = fm.FontProperties(fname=font_path)
+    plt.rcParams['font.sans-serif'] = [font_prop.get_name()]
+    plt.rcParams['axes.unicode_minus'] = False  # 讓負號正常顯示
+    
+except FileNotFoundError:
+    st.warning("⚠️ 找不到中文字體檔，圖表可能無法正常顯示中文。請確認字體檔已上傳至 GitHub。")
+
+# --- 下面接著您原本的載入模型與網頁介面程式碼 ---
 
 # ==========================================
 # 1. 網頁基本設定與載入模型
