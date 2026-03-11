@@ -37,7 +37,7 @@ except FileNotFoundError:
 st.set_page_config(page_title="失智症 5 年風險預測系統", layout="wide")
 
 # 設定 Matplotlib 支援中文顯示 (依據您的作業系統可能需要微調)
-plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei', 'PingFang HK', 'SimHei'] 
+plt.rcParams['font.sans-serif'] = ['Noto Sans TC', 'Microsoft JhengHei', 'PingFang HK', 'SimHei'] 
 plt.rcParams['axes.unicode_minus'] = False 
 
 @st.cache_resource
